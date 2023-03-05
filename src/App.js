@@ -10,6 +10,7 @@ import Modal from "./Modal";
 import Accordion from "./Accordion";
 import Nav from "./Nav";
 import Squares from "./Squares";
+import Slideshow from "./Slideshow";
 import "./App.css";
 import Menu from "./Menu";
 import blue from "./blue.png";
@@ -39,6 +40,7 @@ function App() {
         <h1>Header</h1>
       </Header>
       <Container>
+        <Slideshow></Slideshow>
         <Squares></Squares>
         {/* x need to be string */}
         <h2>Super Cool</h2>
