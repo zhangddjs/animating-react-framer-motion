@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import {
   motion,
   useMotionValue,
@@ -13,6 +14,8 @@ import Squares from "./Squares";
 import Slideshow from "./Slideshow";
 import "./App.css";
 import Menu from "./Menu";
+import HomePage from "./HomePage";
+import AboutPage from "./AboutPage";
 import blue from "./blue.png";
 import purp from "./purp.png";
 import black from "./black.png";
@@ -38,11 +41,22 @@ function App() {
         <Menu onClick={() => setIsNavOpen(true)} />
         <Nav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <h1>Header</h1>
+        <Link to="/about">About</Link>
+        <Link to="/">Home</Link>
       </Header>
       <Container>
+        <h2>Super Cool</h2>
+        <AnimatePresence>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/about" element={<AboutPage />} />
+          </Routes>
+        </AnimatePresence>
+      </Container>
+      {/* <Container>
         <Slideshow></Slideshow>
         <Squares></Squares>
-        {/* x need to be string */}
+        x need to be string
         <h2>Super Cool</h2>
 
         <button onClick={() => setToggle(true)}>Toggle</button>
@@ -117,9 +131,17 @@ function App() {
             <img src={green} />
           </Card>
         </CardGrid>
-      </Container>
+      </Container> */}
     </motion.div>
   );
 }
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+};
+
+export default AppWrapper;
