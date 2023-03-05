@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import {
   motion,
   useMotionValue,
@@ -26,6 +32,7 @@ function App() {
   const [isToggled, setToggle] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isCardActive, setIsCardActive] = useState(true);
+  const location = useLocation();
   const x = useMotionValue(0);
   const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0]); //坐标到-200或200，消失
 
@@ -46,8 +53,9 @@ function App() {
       </Header>
       <Container>
         <h2>Super Cool</h2>
-        <AnimatePresence>
-          <Routes>
+        <AnimatePresence exitBeforeEnter>
+          {/* use key to play animate before exit page */}
+          <Routes location={location} key={location.pathname}>
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/about" element={<AboutPage />} />
           </Routes>
