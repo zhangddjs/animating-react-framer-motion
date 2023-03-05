@@ -9,6 +9,7 @@ import { Card, CardGrid, Container, Header } from "./Elements";
 import Modal from "./Modal";
 import Accordion from "./Accordion";
 import Nav from "./Nav";
+import Squares from "./Squares";
 import "./App.css";
 import Menu from "./Menu";
 import blue from "./blue.png";
@@ -38,6 +39,7 @@ function App() {
         <h1>Header</h1>
       </Header>
       <Container>
+        <Squares></Squares>
         {/* x need to be string */}
         <h2>Super Cool</h2>
 
